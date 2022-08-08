@@ -20,11 +20,11 @@
             <span class="sr-only">Usuarios</span>
         </button>
         <div class="dropdown-menu">
-            <a class="dropdown-item" href="/web/Users/getAllUsers.html">Get all</a>
-            <a class="dropdown-item" href="/web/Users/getUser.html">Get One</a>
-            <a class="dropdown-item" href="/web/Users/createUser.html">Create User</a>
-            <a class="dropdown-item" href="/web/Users/updateUser.html">Update User</a>
-            <a class="dropdown-item" href="/web/Users/userDelete.html">Delete User</a>
+            <a class="dropdown-item" href="/Users/getAll">Get all</a>
+            <a class="dropdown-item" href="/Users/getOne">Get One</a>
+            <a class="dropdown-item" href="/Users/create">Create User</a>
+            <a class="dropdown-item" href="/Users/update">Update User</a>
+            <a class="dropdown-item" href="/Users/delete">Delete User</a>
         </div>
     </div>
 
@@ -34,11 +34,11 @@
             <span class="sr-only">Categorias</span>
         </button>
         <div class="dropdown-menu">
-            <a class="dropdown-item" href="/web/Categories/getAllCategories.html">Get all</a>
-            <a class="dropdown-item" href="/web/Categories/getOneCategory.html">Get One</a>
-            <a class="dropdown-item" href="/web/Categories/createCategory.html">Create Category</a>
-            <a class="dropdown-item" href="/web/Categories/updateCategory.html">Update Category</a>
-            <a class="dropdown-item" href="/web/Categories/deleteCategory.html">Delete Category</a>
+            <a class="dropdown-item" href="/Categories/getAll">Get all</a>
+            <a class="dropdown-item" href="/Categories/getOne">Get One</a>
+            <a class="dropdown-item" href="/Categories/create">Create Category</a>
+            <a class="dropdown-item" href="/Categories/update">Update Category</a>
+            <a class="dropdown-item" href="/Categories/delete">Delete Category</a>
         </div>
     </div>
 
@@ -48,11 +48,11 @@
             <span class="sr-only">Posts</span>
         </button>
         <div class="dropdown-menu">
-            <a class="dropdown-item" href="/web/Posts/getAllPosts.html">Get all</a>
-            <a class="dropdown-item" href="/web/Posts/getOnePost.html">Get One</a>
-            <a class="dropdown-item" href="/web/Posts/createPost.html">Create Post</a>
-            <a class="dropdown-item" href="/web/Posts/updatePost.html">Update Post</a>
-            <a class="dropdown-item" href="/web/Posts/deletePost.html">Delete Post</a>
+            <a class="dropdown-item" href="/Posts/getAll">Get all</a>
+            <a class="dropdown-item" href="/Posts/getOne">Get One</a>
+            <a class="dropdown-item" href="/Posts/create">Create Post</a>
+            <a class="dropdown-item" href="/Posts/update">Update Post</a>
+            <a class="dropdown-item" href="/Posts/delete">Delete Post</a>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
@@ -64,7 +64,7 @@
 </body>
 <script>
     function load_home() {
-        document.getElementById("content").innerHTML = '<object data="/web/Users/getAllUsers.html" ></object>';
+        document.getElementById("content").innerHTML = '<object data="/public/Users/getAllUsers.html" ></object>';
     } </script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

@@ -27,26 +27,37 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Created At</th>
+                    <th>Published</th>
+                    <th>Author ID</th>
                 </tr>
             </thead>
             <tbody id="data">
 
             </tbody>
         </table>
-        <form id="updateCategory" method="put" action="http://localhost:3000/api/v1/users/">
+        <form id="createPost" method="post" action="api/v1/posts/">
             <div>
-                <label for="ID">ID</label>
-                <input id="ID" placeholder="ID">
+                <label for="Title">Title</label>
+                <input id="Title" placeholder="Title">
             </div>
             <br>
             <div>
-                <label for="Name">Name</label>
-                <input id="Name" placeholder="Name">
+                <label for="Content">Content</label>
+                <input id="Content" placeholder="Content">
+                <br>
             </div>
             <br>
             <div>
-                <button type="submit" onclick="refreshPage()">Actualizar categoria</button>
+                <label for="Author ID">Author ID</label>
+                <input id="Author ID" placeholder="Author ID">
+                <br>
+            </div>
+            <br>
+            <div>
+                <button type="submit" onclick="refreshPage()">Crear post</button>
             </div>
         </form>
     </div>
@@ -55,7 +66,7 @@
         crossorigin="anonymous"></script>
 
     <script>
-        let url = 'http://localhost:3000/api/v1/categories/';
+        let url = '/api/v1/posts/';
         fetch(url)
             .then(response => response.json())
             .then(data => mostrarData(data))
@@ -64,7 +75,7 @@
         const mostrarData = (data) => {
             let body = ""
             for (var i = 0; i < data.length; i++) {
-                body += `<tr><td>${data[i].id}</td><td>${data[i].name}</td></tr>`
+                body += `<tr><td>${data[i].id}</td><td>${data[i].title}</td><td>${data[i].content}</td><td>${data[i].createdAt}</td><td>${data[i].published}</td><td>${data[i].authorId}</td></tr>`
             }
             document.getElementById('data').innerHTML = body
         }
@@ -73,20 +84,25 @@
         } 
     </script>
     <script>
-        const sampleForm = document.getElementById("updateCategory");
+        const sampleForm = document.getElementById("createPost");
         sampleForm.addEventListener("submit", async (e) => {
+
             e.preventDefault();
-            let id = document.getElementById("ID").value
-            let name = document.getElementById("Name").value
+
+            let title = document.getElementById("Title").value
+            let content = document.getElementById("Content").value
+            let authorId = document.getElementById("Author ID").value
 
             let formData = {
-                name: name,
+                title: title,
+                content: content,
+                authorId: Number.parseInt(authorId),
+                
             }
 
             let formDataJSON = JSON.stringify(formData)
-            console.log(formDataJSON)
-            fetch('http://localhost:3000/api/v1/categories/' + id, {
-                method: "PUT",
+            fetch('/api/v1/posts/', {
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     Accept: "application/json",
@@ -95,6 +111,6 @@
             })
         });
     </script>
-</body>
 
+</body>
 </html>

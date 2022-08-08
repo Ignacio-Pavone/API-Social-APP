@@ -27,37 +27,44 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Title</th>
-                    <th>Content</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Country</th>
                     <th>Created At</th>
-                    <th>Published</th>
-                    <th>Author ID</th>
+                    <th>Role</th>
                 </tr>
             </thead>
             <tbody id="data">
 
             </tbody>
         </table>
-        <form id="createPost" method="post" action="http://localhost:3000/api/v1/posts/">
+        <form id="probando" method="post" action="/api/v1/users/">
             <div>
-                <label for="Title">Title</label>
-                <input id="Title" placeholder="Title">
+                <label for="Name">Name</label>
+                <input id="Name" placeholder="Name">
             </div>
             <br>
             <div>
-                <label for="Content">Content</label>
-                <input id="Content" placeholder="Content">
+                <label for="Age">Age</label>
+                <input id="Age" placeholder="Age">
                 <br>
             </div>
             <br>
             <div>
-                <label for="Author ID">Author ID</label>
-                <input id="Author ID" placeholder="Author ID">
+                <label for="Email">Email</label>
+                <input id="Email" placeholder="Email">
                 <br>
             </div>
             <br>
             <div>
-                <button type="submit" onclick="refreshPage()">Crear post</button>
+                <label for="Country">Country</label>
+                <input id="Country" placeholder="Country">
+                <br>
+            </div>
+            <br>
+            <div>
+                <button type="submit" onclick="refreshPage()">Crear usuario</button>
             </div>
         </form>
     </div>
@@ -66,7 +73,7 @@
         crossorigin="anonymous"></script>
 
     <script>
-        let url = 'http://localhost:3000/api/v1/posts/';
+        let url = '/api/v1/users/';
         fetch(url)
             .then(response => response.json())
             .then(data => mostrarData(data))
@@ -75,7 +82,7 @@
         const mostrarData = (data) => {
             let body = ""
             for (var i = 0; i < data.length; i++) {
-                body += `<tr><td>${data[i].id}</td><td>${data[i].title}</td><td>${data[i].content}</td><td>${data[i].createdAt}</td><td>${data[i].published}</td><td>${data[i].authorId}</td></tr>`
+                body += `<tr><td>${data[i].id}</td><td>${data[i].name}</td><td>${data[i].age}</td><td>${data[i].email}</td><td>${data[i].country}</td><td>${data[i].createdAt}</td><td>${data[i].role}</td></tr>`
             }
             document.getElementById('data').innerHTML = body
         }
@@ -84,24 +91,25 @@
         } 
     </script>
     <script>
-        const sampleForm = document.getElementById("createPost");
+        const sampleForm = document.getElementById("probando");
         sampleForm.addEventListener("submit", async (e) => {
 
             e.preventDefault();
 
-            let title = document.getElementById("Title").value
-            let content = document.getElementById("Content").value
-            let authorId = document.getElementById("Author ID").value
+            let name = document.getElementById("Name").value
+            let age = document.getElementById("Age").value
+            let email = document.getElementById("Email").value
+            let country = document.getElementById("Country").value
 
             let formData = {
-                title: title,
-                content: content,
-                authorId: Number.parseInt(authorId),
-                
+                name: name,
+                age: age,
+                email: email,
+                country
             }
 
             let formDataJSON = JSON.stringify(formData)
-            fetch('http://localhost:3000/api/v1/posts/', {
+            fetch('/api/v1/users/', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

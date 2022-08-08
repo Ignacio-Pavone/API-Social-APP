@@ -13,7 +13,6 @@
             background-color: cornflowerblue;
         }
 
-
         table thead {
             background: #302b63;
             color: white;
@@ -40,7 +39,7 @@
 
                 </tbody>
             </table>
-            <form id="delteUser" method="delete" action="http://localhost:3000/api/v1/users/">
+            <form id="delteUser" method="delete" action="api/v1/users/">
                 <div>
                     <label for="ID">ID</label>
                     <input id="ID" placeholder="ID">
@@ -52,7 +51,7 @@
             </form>
         </div>
         <script>
-            let url = 'http://localhost:3000/api/v1/users/';
+            let url = '/api/v1/users/';
             fetch(url)
                 .then(response => response.json())
                 .then(data => mostrarData(data))
@@ -70,11 +69,12 @@
             } 
         </script>
         <script>
+            
             const sampleForm = document.getElementById("delteUser");
             sampleForm.addEventListener("submit", async (e) => {
                 e.preventDefault();
                 let id = document.getElementById("ID").value
-                fetch('http://localhost:3000/api/v1/users/' + id, {
+                fetch('/api/v1/users/' + id, {
                     method: "delete",
                     headers: {
                         "Content-Type": "application/json",

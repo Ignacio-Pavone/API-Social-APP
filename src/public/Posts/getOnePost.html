@@ -11,6 +11,7 @@
         body {
             background-color: cornflowerblue;
         }
+
         table thead {
             background: #302b63;
             color: white;
@@ -21,18 +22,17 @@
 
 <body>
     <div>
-        <form id="getUser">
+        <form id="getPost">
             <div class="container mt-4 shadow-lg p-3 mb-5 bg-body rounded">
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Name</th>
-                            <th>Age</th>
-                            <th>Email</th>
-                            <th>Country</th>
+                            <th>Title</th>
+                            <th>Content</th>
                             <th>Created At</th>
-                            <th>Role</th>
+                            <th>Published</th>
+                            <th>Author ID</th>
                         </tr>
                     </thead>
                     <tbody id="data">
@@ -44,7 +44,7 @@
                 </div>
                 <br>
                 <div>
-                    <button type="submit">Mostrar User</button>
+                    <button type="submit">Mostrar Post</button>
                 </div>
 
         </form>
@@ -54,15 +54,12 @@
         crossorigin="anonymous"></script>
 
     <script>
-        const sampleForm = document.getElementById("getUser");
+        const sampleForm = document.getElementById("getPost");
         sampleForm.addEventListener("submit", async (e) => {
             e.preventDefault();
 
             let id = document.getElementById("ID").value
-            console.log(document.getElementById("ID").value)
-            let url = 'http://localhost:3000/api/v1/users/' + id
-            console.log(url + id)
-            console.log("hola")
+            let url = '/api/v1/posts/' + id
             fetch(url)
                 .then(response => response.json())
                 .then(data => mostrarData(data))
@@ -70,7 +67,9 @@
 
             const mostrarData = (data) => {
                 let body = ""
-                body += `<tr><td>${data.id}</td><td>${data.name}</td><td>${data.age}</td><td>${data.email}</td><td>${data.country}</td><td>${data.createdAt}</td><td>${data.role}</td></tr>`
+
+                body += `<tr><td>${data.id}</td><td>${data.title}</td><td>${data.content}</td><td>${data.createdAt}</td><td>${data.published}</td><td>${data.authorId}</td></tr>`
+
                 console.log(data)
                 document.getElementById('data').innerHTML = body
             }

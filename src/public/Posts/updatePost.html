@@ -27,58 +27,45 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Email</th>
-                    <th>Country</th>
+                    <th>Title</th>
+                    <th>Content</th>
                     <th>Created At</th>
-                    <th>Role</th>
+                    <th>Published</th>
+                    <th>Author ID</th>
                 </tr>
             </thead>
             <tbody id="data">
 
             </tbody>
         </table>
-        <form id="updatUserhtml" method="put" action="http://localhost:3000/api/v1/users/">
+        <form id="updatePostHtml" method="PUT" action="/api/v1/posts/">
+            <br>
             <div>
                 <label for="ID">ID</label>
                 <input id="ID" placeholder="ID">
             </div>
             <br>
             <div>
-                <label for="Name">Name</label>
-                <input id="Name" placeholder="Name">
+                <label for="Title">Title</label>
+                <input id="Title" placeholder="Title">
             </div>
             <br>
             <div>
-                <label for="Age">Age</label>
-                <input id="Age" placeholder="Age">
-                <br>
+                <label for="Content">Content</label>
+                <input id="Content" placeholder="Content">
             </div>
             <br>
-            <div>
-                <label for="Email">Email</label>
-                <input id="Email" placeholder="Email">
-                <br>
-            </div>
             <br>
             <div>
-                <label for="Country">Country</label>
-                <input id="Country" placeholder="Country">
-                <br>
-            </div>
-            <br>
-            <div>
-                <button type="submit" onclick="refreshPage()">Actualizar usuario</button>
+                <button type="submit" onclick="refreshPage()">Actualizar post</button>
             </div>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>
-
     <script>
-        let url = 'http://localhost:3000/api/v1/users/';
+        let url = '/api/v1/posts/';
         fetch(url)
             .then(response => response.json())
             .then(data => mostrarData(data))
@@ -86,8 +73,8 @@
 
         const mostrarData = (data) => {
             let body = ""
-            for (var i = 0; i < data.length; i++) {
-                body += `<tr><td>${data[i].id}</td><td>${data[i].name}</td><td>${data[i].age}</td><td>${data[i].email}</td><td>${data[i].country}</td><td>${data[i].createdAt}</td><td>${data[i].role}</td></tr>`
+            for (let i = 0; i < data.length; i++) {
+                body += `<tr><td>${data[i].id}</td><td>${data[i].title}</td><td>${data[i].content}</td><td>${data[i].createdAt}</td><td>${data[i].published}</td><td>${data[i].authorId}</td></tr>`
             }
             document.getElementById('data').innerHTML = body
         }
@@ -96,25 +83,22 @@
         } 
     </script>
     <script>
-        const sampleForm = document.getElementById("updatUserhtml");
+        const sampleForm = document.getElementById("updatePostHtml");
         sampleForm.addEventListener("submit", async (e) => {
+
             e.preventDefault();
             let id = document.getElementById("ID").value
-            let name = document.getElementById("Name").value
-            let age = document.getElementById("Age").value
-            let email = document.getElementById("Email").value
-            let country = document.getElementById("Country").value
+            let title = document.getElementById("Title").value
+            let content = document.getElementById("Content").value
 
             let formData = {
-                name: name,
-                age: age,
-                email: email,
-                country
+                title: title,
+                content: content,
             }
-
+            
+            console.log(formData)
             let formDataJSON = JSON.stringify(formData)
-            console.log(formDataJSON)
-            fetch('http://localhost:3000/api/v1/users/' + id, {
+            fetch('/api/v1/posts/' + id, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -124,6 +108,6 @@
             })
         });
     </script>
-</body>
 
+</body>
 </html>

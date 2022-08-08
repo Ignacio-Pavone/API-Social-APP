@@ -35,7 +35,7 @@
 
                 </tbody>
             </table>
-            <form id="deleteCategory" method="delete" action="http://localhost:3000/api/v1/categories/">
+            <form id="deleteCategory" method="delete" action="api/v1/categories/">
                 <div>
                     <label for="ID">ID</label>
                     <input id="ID" placeholder="ID">
@@ -47,7 +47,7 @@
             </form>
         </div>
         <script>
-            let url = 'http://localhost:3000/api/v1/categories/';
+            let url = '/api/v1/categories/';
             fetch(url)
                 .then(response => response.json())
                 .then(data => mostrarData(data))
@@ -69,7 +69,7 @@
             sampleForm.addEventListener("submit", async (e) => {
                 e.preventDefault();
                 let id = document.getElementById("ID").value
-                fetch('http://localhost:3000/api/v1/categories/' + id, {
+                fetch('/api/v1/categories/' + id, {
                     method: "delete",
                     headers: {
                         "Content-Type": "application/json",

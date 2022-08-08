@@ -54,7 +54,7 @@
             e.preventDefault();
 
             let id = document.getElementById("ID").value
-            let url = 'http://localhost:3000/api/v1/categories/' + id
+            let url = '/api/v1/categories/' + id
             console.log(url + id)
             fetch(url)
                 .then(response => response.json())

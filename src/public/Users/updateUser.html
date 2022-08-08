@@ -39,7 +39,12 @@
 
             </tbody>
         </table>
-        <form id="probando" method="post" action="http://localhost:3000/api/v1/users/">
+        <form id="updatUserhtml" method="put" action="/api/v1/users/">
+            <div>
+                <label for="ID">ID</label>
+                <input id="ID" placeholder="ID">
+            </div>
+            <br>
             <div>
                 <label for="Name">Name</label>
                 <input id="Name" placeholder="Name">
@@ -64,7 +69,7 @@
             </div>
             <br>
             <div>
-                <button type="submit" onclick="refreshPage()">Crear usuario</button>
+                <button type="submit" onclick="refreshPage()">Actualizar usuario</button>
             </div>
         </form>
     </div>
@@ -73,7 +78,7 @@
         crossorigin="anonymous"></script>
 
     <script>
-        let url = 'http://localhost:3000/api/v1/users/';
+        let url = '/api/v1/users/';
         fetch(url)
             .then(response => response.json())
             .then(data => mostrarData(data))
@@ -91,11 +96,10 @@
         } 
     </script>
     <script>
-        const sampleForm = document.getElementById("probando");
+        const sampleForm = document.getElementById("updatUserhtml");
         sampleForm.addEventListener("submit", async (e) => {
-
             e.preventDefault();
-
+            let id = document.getElementById("ID").value
             let name = document.getElementById("Name").value
             let age = document.getElementById("Age").value
             let email = document.getElementById("Email").value
@@ -109,8 +113,9 @@
             }
 
             let formDataJSON = JSON.stringify(formData)
-            fetch('http://localhost:3000/api/v1/users/', {
-                method: "POST",
+            console.log(formDataJSON)
+            fetch('/api/v1/users/' + id, {
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                     Accept: "application/json",
@@ -119,6 +124,6 @@
             })
         });
     </script>
-
 </body>
+
 </html>

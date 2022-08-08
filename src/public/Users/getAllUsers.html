@@ -44,7 +44,7 @@
         crossorigin="anonymous"></script>
 
     <script>
-        let url = 'http://localhost:3000/api/v1/users/';
+        let url = '/api/v1/users/';
         fetch(url)
             .then(response => response.json())
             .then(data => mostrarData(data))
