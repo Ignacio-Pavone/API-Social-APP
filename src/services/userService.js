@@ -1,4 +1,4 @@
-const User = require("../database/User")
+const User = require("../database/User.js")
 
 const getAllUsers = () => {
     const allUsers = User.getAllUsers()

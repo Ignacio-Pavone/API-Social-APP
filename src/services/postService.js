@@ -1,4 +1,4 @@
-const post = require ("../database/Post")
+const post = require ("../database/Post.js")
 
 const getPosts = () => {
     const getPosts = post.getPosts()

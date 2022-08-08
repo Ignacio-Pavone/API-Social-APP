@@ -1,4 +1,4 @@
-const categoryService = require("../services/categoryService")
+const categoryService = require("../services/categoryService.js")
 
 const getAllCategories = async (req, res) => {
     const allCategories = await categoryService.getCategories()

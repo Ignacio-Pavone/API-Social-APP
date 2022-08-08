@@ -1,4 +1,4 @@
-const postService = require("../services/PostService")
+const postService = require("../services/PostService.js")
 
 const getAllPosts = async (req, res) => {
     const getAllPosts = await postService.getPosts()

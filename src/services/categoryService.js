@@ -1,4 +1,4 @@
-const category = require ("../database/Category")
+const category = require ("../database/Category.js")
 
 const getCategories = () => {
     const allCategories = category.getCategories()
