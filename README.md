@@ -1,2 +1,5 @@
 # Social-APP
-Api created with - Nodejs, MySql, Prisma, Bootstrap
+Api created with - 
+Nodejs,Express 
+MySql, Prisma, 
+Html, Bootstrap
