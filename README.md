@@ -1,5 +1,5 @@
 # Social-APP
 Api created with - 
-Nodejs,Express 
+Nodejs, Express 
 MySql, Prisma, 
 Html, Bootstrap
